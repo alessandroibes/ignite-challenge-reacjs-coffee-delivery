@@ -1,42 +1,49 @@
+import { Coffee, Package, ShoppingCart, Timer } from '@phosphor-icons/react';
+import { CoffeeList, Heading, Hero, HeroContent, Info } from './styles';
+
 export function Home() {
   return (
     <div>
-      <section className="hero">
-        <div className="heroContent">
+      <Hero>
+        <HeroContent>
           <div>
-            <div className="heroHeading">
+            <Heading>
               <h1>Encontre o café perfeito para qualquer hora do dia</h1>
 
               <span>
                 Com o Coffee Delivery você recebe seu café onde estiver, a
                 qualquer hora
               </span>
-            </div>
+            </Heading>
 
-            <div className="heroInfo">
+            <Info>
               <div>
+                <ShoppingCart size={32} weight="fill" />
                 <span>Compra simples e segura</span>
               </div>
 
               <div>
+                <Package size={32} weight="fill" />
                 <span>Embalagem mantém o café intacto</span>
               </div>
 
               <div>
+                <Timer size={32} weight="fill" />
                 <span>Entrega rápida e rastreada</span>
               </div>
 
               <div>
+                <Coffee size={32} weight="fill" />
                 <span>O café chega fresquinho até você</span>
               </div>
-            </div>
+            </Info>
           </div>
 
-          <img src="" />
-        </div>
-      </section>
+          <img src="/images/hero.svg" alt="Café do Coffee Delivery" />
+        </HeroContent>
+      </Hero>
 
-      <section className="coffeeList">
+      <CoffeeList>
         <h2>Nossos cafés</h2>
 
         <div>
@@ -71,7 +78,7 @@ export function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </CoffeeList>
     </div>
   );
 }
