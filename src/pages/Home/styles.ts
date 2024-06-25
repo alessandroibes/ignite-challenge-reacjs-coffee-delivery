@@ -55,4 +55,23 @@ export const Info = styled.div`
   }
 `;
 
-export const CoffeeList = styled.section``;
+export const CoffeeList = styled.section`
+  max-width: 1160px;
+  padding: 2rem 1.25rem 9.375rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3.375rem;
+
+  > h2 {
+    ${mixins.fonts.titleL}
+    color: ${({ theme }) => theme.colors['base-subtitle']}
+  }
+
+  > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-row-gap: 40px;
+    grid-column-gap: 32px;
+  }
+`;
