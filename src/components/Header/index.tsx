@@ -1,19 +1,23 @@
 import { MapPin, ShoppingCart } from '@phosphor-icons/react';
-import { Container } from './styles';
+import { Aside, Container } from './styles';
 
 export function Header() {
   return (
     <Container>
-      <aside>
+      <a href="#">
         <img src="/logo.svg" alt="Coffee Delivery" />
-
+      </a>
+      <Aside>
         <div>
           <MapPin size={22} weight="fill" />
           <span>Porto Alegre, RS</span>
         </div>
 
-        <ShoppingCart size={22} weight="fill" />
-      </aside>
+        <a href="#">
+          <ShoppingCart size={22} weight="fill" />
+          <span>5</span>
+        </a>
+      </Aside>
     </Container>
   );
 }
