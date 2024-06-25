@@ -1,3 +1,6 @@
+import { Minus, Plus, ShoppingCart } from '@phosphor-icons/react';
+import { useTheme } from 'styled-components';
+
 import {
   CoffeeImg,
   Container,
@@ -5,6 +8,7 @@ import {
   Description,
   Order,
   Price,
+  QuantityInput,
   Tags,
   Title,
 } from './styles';
@@ -21,6 +25,8 @@ type CardProps = {
 };
 
 export function Card({ coffee }: CardProps) {
+  const theme = useTheme();
+
   return (
     <Container>
       <CoffeeImg src={coffee.image} />
@@ -42,13 +48,19 @@ export function Card({ coffee }: CardProps) {
         </Price>
 
         <Order>
-          <div>
-            <button>decrement</button>
+          <QuantityInput>
+            <button>
+              <Minus size={14} />
+            </button>
             <span>1</span>
-            <button>increment</button>
-          </div>
+            <button>
+              <Plus size={14} />
+            </button>
+          </QuantityInput>
 
-          <button>Carrinho</button>
+          <button>
+            <ShoppingCart size={22} color={theme.colors['base-card']} />
+          </button>
         </Order>
       </Control>
     </Container>
