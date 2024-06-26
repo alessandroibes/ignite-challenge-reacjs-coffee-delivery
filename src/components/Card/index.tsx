@@ -1,4 +1,4 @@
-import { Minus, Plus, ShoppingCart } from '@phosphor-icons/react';
+import { ShoppingCart } from '@phosphor-icons/react';
 import { useTheme } from 'styled-components';
 
 import {
@@ -8,10 +8,10 @@ import {
   Description,
   Order,
   Price,
-  QuantityInput,
   Tags,
   Title,
 } from './styles';
+import { QuantityInput } from '../QuantityInput';
 
 type CardProps = {
   coffee: {
@@ -48,15 +48,7 @@ export function Card({ coffee }: CardProps) {
         </Price>
 
         <Order>
-          <QuantityInput>
-            <button>
-              <Minus size={14} />
-            </button>
-            <span>1</span>
-            <button>
-              <Plus size={14} />
-            </button>
-          </QuantityInput>
+          <QuantityInput quantity={1} />
 
           <button>
             <ShoppingCart size={22} color={theme.colors['base-card']} />
