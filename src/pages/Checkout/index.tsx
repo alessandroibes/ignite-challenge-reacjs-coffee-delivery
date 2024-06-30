@@ -11,7 +11,6 @@ import {
   AddressContainer,
   AddressForm,
   AddressHeading,
-  Box,
   CartTotal,
   CartTotalInfo,
   CheckoutButton,
@@ -22,9 +21,10 @@ import {
   PaymentContainer,
   PaymentHeading,
   PaymentOptions,
-  TextInput,
 } from './styles';
 import { QuantityInput } from '../../components/QuantityInput';
+import { Radio } from '../../components/Radio';
+import { TextInput } from '../../components/TextInput';
 
 export function Checkout() {
   return (
@@ -45,47 +45,43 @@ export function Checkout() {
             </AddressHeading>
 
             <AddressForm>
-              <Box>
-                <TextInput>
-                  <input type="number" placeholder="CEP" />
-                </TextInput>
-              </Box>
+              <TextInput
+                placeholder="CEP"
+                type="number"
+                containerProps={{ style: { gridArea: 'cep' } }}
+              />
 
-              <Box>
-                <TextInput>
-                  <input type="text" placeholder="Rua" />
-                </TextInput>
-              </Box>
+              <TextInput
+                placeholder="Rua"
+                containerProps={{ style: { gridArea: 'street' } }}
+              />
 
-              <Box>
-                <TextInput>
-                  <input type="text" placeholder="Número" />
-                </TextInput>
-              </Box>
+              <TextInput
+                placeholder="Número"
+                containerProps={{ style: { gridArea: 'number' } }}
+              />
 
-              <Box>
-                <TextInput>
-                  <input type="text" placeholder="Complemento" />
-                </TextInput>
-              </Box>
+              <TextInput
+                placeholder="Complemento"
+                optional
+                containerProps={{ style: { gridArea: 'fullAddress' } }}
+              />
 
-              <Box>
-                <TextInput>
-                  <input type="text" placeholder="Bairro" />
-                </TextInput>
-              </Box>
+              <TextInput
+                placeholder="Bairro"
+                containerProps={{ style: { gridArea: 'neighborhood' } }}
+              />
 
-              <Box>
-                <TextInput>
-                  <input type="text" placeholder="Cidade" />
-                </TextInput>
-              </Box>
+              <TextInput
+                placeholder="Cidade"
+                containerProps={{ style: { gridArea: 'city' } }}
+              />
 
-              <Box>
-                <TextInput>
-                  <input type="text" placeholder="Estado" />
-                </TextInput>
-              </Box>
+              <TextInput
+                placeholder="UF"
+                maxLength={2}
+                containerProps={{ style: { gridArea: 'state' } }}
+              />
             </AddressForm>
           </AddressContainer>
 
@@ -105,23 +101,20 @@ export function Checkout() {
 
             <PaymentOptions>
               <div>
-                <label>
-                  <input type="radio" value="credit" />
+                <Radio isSelected={true} value="credit">
                   <CreditCard size={16} />
                   <span>Cartão de crédito</span>
-                </label>
+                </Radio>
 
-                <label>
-                  <input type="radio" value="debit" />
+                <Radio isSelected={false} value="debit">
                   <Bank size={16} />
                   <span>Cartão de débito</span>
-                </label>
+                </Radio>
 
-                <label>
-                  <input type="radio" value="cash" />
+                <Radio isSelected={false} value="cash">
                   <Money size={16} />
                   <span>Dinheiro</span>
-                </label>
+                </Radio>
               </div>
             </PaymentOptions>
           </PaymentContainer>
