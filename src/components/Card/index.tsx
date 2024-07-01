@@ -1,4 +1,5 @@
 import { ShoppingCart } from '@phosphor-icons/react';
+import { useState } from 'react';
 import { useTheme } from 'styled-components';
 
 import {
@@ -25,7 +26,18 @@ type CardProps = {
 };
 
 export function Card({ coffee }: CardProps) {
+  const [quantity, setQuantity] = useState(1);
   const theme = useTheme();
+
+  function incrementQuantity() {
+    setQuantity(state => state + 1);
+  }
+
+  function decrementQuantity() {
+    if (quantity > 1) {
+      setQuantity(state => state - 1);
+    }
+  }
 
   return (
     <Container>
@@ -48,7 +60,11 @@ export function Card({ coffee }: CardProps) {
         </Price>
 
         <Order>
-          <QuantityInput quantity={1} />
+          <QuantityInput
+            quantity={quantity}
+            incrementQuantity={incrementQuantity}
+            decrementQuantity={decrementQuantity}
+          />
 
           <button>
             <ShoppingCart size={22} color={theme.colors['base-card']} />

@@ -3,16 +3,22 @@ import { Container } from './style';
 
 type QuantityInputProps = {
   quantity: number;
+  incrementQuantity: () => void;
+  decrementQuantity: () => void;
 };
 
-export function QuantityInput({ quantity }: QuantityInputProps) {
+export function QuantityInput({
+  quantity,
+  incrementQuantity,
+  decrementQuantity,
+}: QuantityInputProps) {
   return (
     <Container>
-      <button>
+      <button onClick={decrementQuantity}>
         <Minus size={14} />
       </button>
       <span>{quantity}</span>
-      <button>
+      <button onClick={incrementQuantity}>
         <Plus size={14} />
       </button>
     </Container>
