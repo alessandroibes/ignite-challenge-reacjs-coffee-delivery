@@ -1,30 +1,63 @@
-# React + TypeScript + Vite
+# Coffee Delivery
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação React para gerenciar um carrinho de compras de uma cafeteria fictícia, que contém as seguintes funcionalidades::
 
-Currently, two official plugins are available:
+- Listagem de produtos (cafés) disponíveis para compra
+- Adicionar uma quantidade específicas de itens no carrinho
+- Aumentar ou remover a quantidade de itens no carrinho
+- Formulário para o usuário preencher o seu endereço
+- Exibir o total de itens no carrinho no Header
+- Exibir o valor total da soma de itens no carrinho multiplicados pelo valor
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Foi criada com Vite (https://vitejs.dev/) usando o template de TypeScript.
 
-## Expanding the ESLint configuration
+Esta aplicação utiliza os seguintes conhecimentos de React:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Estados
+- ContextAPI
+- LocalStorage
+- Imutabilidade do estado
+- Listas e chaves no ReactJS
+- Propriedades
+- Componentização
 
-- Configure the top-level `parserOptions` property like this:
+## Bibliotecas utilizadas
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+- [@hookform/resolvers] (https://www.npmjs.com/package/@hookform/resolvers)
+- [@phosphor-icons/react] (https://www.npmjs.com/package/@phosphor-icons/react)
+- [@rocketseat/eslint-config] (https://github.com/Rocketseat/eslint-config-rocketseat)
+- [immer] (https://www.npmjs.com/package/immer)
+- [react-hook-form] (https://www.npmjs.com/package/react-hook-form)
+- [react-router-dom] (https://www.npmjs.com/package/react-router-dom)
+- [styled-components] (https://www.npmjs.com/package/styled-components)
+- [zod] (https://www.npmjs.com/package/zod)
+
+## Para executar a aplicação
+
+Baixar dependências:
+
+```shell
+npm i
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Executar o comando:
+
+```shell
+npm run dev
+```
+
+## Telas
+
+### Página Home
+
+![alt text](prints/home_top.png)
+
+![alt text](prints/home_bottom.png)
+
+### Tela Checkout
+
+![alt text](prints/checkout.png)
+
+### Tela Success
+
+![alt text](prints/success.png)
