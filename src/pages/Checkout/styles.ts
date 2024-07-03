@@ -205,3 +205,9 @@ export const CheckoutButton = styled.button`
     background-color: ${({ theme }) => theme.colors['yellow-dark']};
   }
 `;
+
+export const PaymentErrorMessage = styled.p`
+  ${mixins.fonts.textXS};
+  font-weight: 400;
+  color: red;
+`;
