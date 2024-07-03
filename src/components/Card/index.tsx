@@ -1,7 +1,9 @@
-import { ShoppingCart } from '@phosphor-icons/react';
-import { useState } from 'react';
+import { CheckFat, ShoppingCart } from '@phosphor-icons/react';
+import { useEffect, useState } from 'react';
 import { useTheme } from 'styled-components';
 
+import { QuantityInput } from '../QuantityInput';
+import { useCart } from '../../hooks/useCart';
 import {
   CoffeeImg,
   Container,
@@ -12,7 +14,6 @@ import {
   Tags,
   Title,
 } from './styles';
-import { QuantityInput } from '../QuantityInput';
 
 type CardProps = {
   coffee: {
@@ -27,6 +28,9 @@ type CardProps = {
 
 export function Card({ coffee }: CardProps) {
   const [quantity, setQuantity] = useState(1);
+  const [isItemAdded, setIsItemAdded] = useState(false);
+  const { addItem } = useCart();
+
   const theme = useTheme();
 
   function incrementQuantity() {
@@ -39,9 +43,31 @@ export function Card({ coffee }: CardProps) {
     }
   }
 
+  function handleAddItem() {
+    addItem({ id: coffee.id, quantity });
+    setIsItemAdded(true);
+    setQuantity(1);
+  }
+
+  useEffect(() => {
+    let timeout: number;
+
+    if (isItemAdded) {
+      timeout = setTimeout(() => {
+        setIsItemAdded(false);
+      }, 1000);
+    }
+
+    return () => {
+      if (timeout) {
+        clearTimeout(timeout);
+      }
+    };
+  }, [isItemAdded]);
+
   return (
     <Container>
-      <CoffeeImg src={coffee.image} />
+      <CoffeeImg src={coffee.image} alt={coffee.title} />
 
       <Tags>
         {coffee.tags.map(tag => (
@@ -59,15 +85,23 @@ export function Card({ coffee }: CardProps) {
           <span>{coffee.price.toFixed(2)}</span>
         </Price>
 
-        <Order>
+        <Order $itemAdded={isItemAdded}>
           <QuantityInput
             quantity={quantity}
             incrementQuantity={incrementQuantity}
             decrementQuantity={decrementQuantity}
           />
 
-          <button>
-            <ShoppingCart size={22} color={theme.colors['base-card']} />
+          <button disabled={isItemAdded} onClick={handleAddItem}>
+            {isItemAdded ? (
+              <CheckFat
+                weight="fill"
+                size={22}
+                color={theme.colors['base-card']}
+              />
+            ) : (
+              <ShoppingCart size={22} color={theme.colors['base-card']} />
+            )}
           </button>
         </Order>
       </Control>

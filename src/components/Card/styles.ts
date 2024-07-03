@@ -72,20 +72,22 @@ export const Price = styled.div`
   }
 `;
 
-export const Order = styled.div`
+export const Order = styled.div<{ $itemAdded?: boolean }>`
   display: flex;
   align-items: center;
   gap: 8px;
 
   > button {
-    background-color: ${({ theme }) => theme.colors['yellow-dark']};
+    background-color: ${({ theme, $itemAdded }) =>
+      $itemAdded ? theme.colors['yellow-dark'] : theme.colors['purple-dark']};
     transition: background-color 0.2s;
     border-radius: 6px;
     padding: 8px;
     display: flex;
 
     &:hover {
-      background-color: ${({ theme }) => theme.colors.yellow};
+      background-color: ${({ theme, $itemAdded }) =>
+        $itemAdded ? theme.colors.yellow : theme.colors.purple};
     }
   }
 `;
